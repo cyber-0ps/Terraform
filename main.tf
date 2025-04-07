@@ -116,7 +116,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   }
 }
 
-# Deploy the private subnets
+# Deploy the private subnets.
 resource "aws_instance" "web" {
   ami           = "ami-00a929b66ed6e0de6"
   instance_type = "t2.micro"
