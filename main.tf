@@ -252,7 +252,7 @@ resource "aws_security_group" "vpc-ping" {
   name        = "vpc-ping"
   vpc_id      = aws_vpc.vpc.id
   description = "ICMP for Ping Access"
-  ingress {
+  ingress {x
     description = "Allow ICMP Traffic"
     from_port   = -1
     to_port     = -1
@@ -265,5 +265,19 @@ resource "aws_security_group" "vpc-ping" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# Terraform Resource Block - To Build EC2 instance in Public Subnets
+resource "aws_instance" "ubuntu_server" {
+  ami = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.public_subnets["public_subnet_1"].id
+  security_groups = [aws_security_group.vpc-ping.id]
+  associate_public_ip_address = true 
+  tags = {
+    lifecycle {
+      ignore_changes = [security_groups]
+    }
   }
 }
