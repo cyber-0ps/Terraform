@@ -292,6 +292,11 @@ resource "aws_instance" "ubuntu_server" {
 
 }
 
+# Leave the first part of the block unchanged and create our `local-exec` provisioner
+  provisioner "local-exec" {
+    command = "chmod 600 ${local_file.private_key_pem.filename}"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo rm -rf /tmp",
