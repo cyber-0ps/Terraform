@@ -331,5 +331,6 @@ resource "aws_instance" "web_server" {
 }
 
 resource "aws_instance" "aws_linux" {
-  
+  ami           = "ami-013a129d325529d4d"
+  instance_type = "t3.micro"
 }
