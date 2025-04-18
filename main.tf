@@ -329,3 +329,7 @@ resource "aws_instance" "web_server" {
   }
 
 }
+
+resource "aws_instance" "aws_linux" {
+  
+}
