@@ -167,16 +167,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-resource "aws_instance" "web_server" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-  subnet_id     = aws_subnet.public_subnets["public_subnet_1"].id
-  tags = {
-    Name  = local.server_name
-    Owner = local.team
-    App   = local.application
-  }
-}
+
 
 resource "tls_private_key" "generated" {
   algorithm = "RSA"
