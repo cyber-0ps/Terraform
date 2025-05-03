@@ -353,6 +353,10 @@ output "public_dns" {
   value = module.server.public_dns
 }
 
+output "size" {
+  value = module.server.size
+}
+
 module "server_subnet_1" {
   source      = "./modules/modules/web_server"
   ami         = data.aws_ami.ubuntu.id
