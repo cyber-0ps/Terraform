@@ -443,6 +443,7 @@ output "s3_bucket_name" {
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = ">3.0.0"
 
   name = "my-vpc-terraform"
   cidr = "10.0.0.0/16"
@@ -455,8 +456,8 @@ module "vpc" {
   enable_vpn_gateway = true
 
   tags = {
-    Name = "VPC from Module"
-    Terraform = "true"
+    Name        = "VPC from Module"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
