@@ -442,7 +442,7 @@ output "s3_bucket_name" {
 }
 
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source  = "terraform-aws-modules/vpc/aws"
   version = ">3.0.0"
 
   name = "my-vpc-terraform"
@@ -460,4 +460,8 @@ module "vpc" {
     Terraform   = "true"
     Environment = "dev"
   }
+}
+
+ resource "random_string" "random" {
+  length = 16
 }
