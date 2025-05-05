@@ -465,3 +465,7 @@ module "vpc" {
  resource "random_string" "random" {
   length = 16
 }
+
+resource "random_pet" "server" {
+  length = 2
+}
