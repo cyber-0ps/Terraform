@@ -357,18 +357,6 @@ output "size" {
   value = module.server.size
 }
 
-module "server_subnet_1" {
-  source      = "./modules/modules/web_server"
-  ami         = data.aws_ami.ubuntu.id
-  key_name    = aws_key_pair.generated.key_name
-  user        = "ubuntu"
-  private_key = tls_private_key.generated.private_key_pem
-  subnet_id   = aws_subnet.public_subnets["public_subnet_1"].id
-  security_groups = [aws_security_group.vpc-ping.id,
-    aws_security_group.ingress-ssh.id,
-  aws_security_group.vpc-web.id]
-}
-
 output "public_ip_server_subnet_1" {
   value = module.server.public_ip
 }
@@ -462,7 +450,7 @@ module "vpc" {
   }
 }
 
- resource "random_string" "random" {
+resource "random_string" "random" {
   length = 16
 }
 
