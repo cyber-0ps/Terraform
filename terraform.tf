@@ -1,4 +1,7 @@
 terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
   required_version = ">= 1.0.0"
   required_providers {
     aws = {
