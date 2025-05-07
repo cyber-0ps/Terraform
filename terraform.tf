@@ -1,7 +1,10 @@
 terraform {
-  backend "local" {
-    path = "terraform.tfstate"
+  backend "s3" {
+    bucket = "my-terraform-state-ghm"
+    key    = "prod/aws_infra"
+    region = "us-east-1"
   }
+
   required_version = ">= 1.0.0"
   required_providers {
     aws = {
