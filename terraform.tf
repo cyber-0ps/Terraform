@@ -1,14 +1,21 @@
 terraform {
-  backend "s3" {
-    bucket = "my-terraform-state-ghm"
-    key    = "prod/aws_infra"
-    region = "us-east-1"
+  //backend "s3" {
+  //  bucket = "my-terraform-state-ghm"
+  //  key    = "prod/aws_infra"
+  //  region = "us-east-1"
 
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
+  //  # Replace this with your DynamoDB table name!
+  //  dynamodb_table = "terraform-locks"
+  //  encrypt        = true
+  //}
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "Enterprise-Cloud"
+
+    workspaces {
+      name = "my-aws-app"
+    }
   }
-
   required_version = ">= 1.0.0"
   required_providers {
     aws = {
