@@ -455,3 +455,15 @@ locals {
   app_team     = "Cloud Team"
   createdby    = "terraform"
 }
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Name      = var.server_name
+    Owner     = local.team
+    App       = local.application
+    Service   = local.service_name
+    AppTeam   = local.app_team
+    CreatedBy = local.createdby
+ } 
+}
