@@ -446,3 +446,9 @@ resource "aws_instance" "web_server_2" {
     Name = "Web EC2 Server"
   }
 }
+
+locals {
+  service_name = "Automation"
+  app_team     = "Cloud Team"
+  createdby    = "terraform"
+}
