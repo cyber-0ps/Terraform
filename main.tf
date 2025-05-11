@@ -319,7 +319,10 @@ resource "aws_instance" "web_server" {
   }
 
   tags = {
-    Name = "Web EC2 Server"
+    Name        = "Web EC2 Server"
+    "Service"   = local.service_name
+    "AppTeam"   = local.app_team
+    "CreatedBy" = local.createdby
   }
 
   lifecycle {
