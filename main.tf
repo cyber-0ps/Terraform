@@ -498,6 +498,7 @@ output "cost_code" {
 }
 
 output "phone_number" {
+  sensitive = true
   value = local.contact_info.phone_number
 }
 
