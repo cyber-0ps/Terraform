@@ -52,3 +52,9 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+ variable "phone_number" {
+  type      = string
+  sensitive = true
+  default   = "867-5309"
+}
