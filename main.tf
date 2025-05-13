@@ -505,3 +505,8 @@ output "phone_number" {
 output "my_number" {
   value = local.my_number
 }
+
+output "phone_number" {
+  value     = var.phone_number
+  sensitive = true
+}
