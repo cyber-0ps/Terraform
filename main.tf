@@ -534,10 +534,8 @@ resource "aws_subnet" "list_subnet" {
   availability_zone = var.us-east-1-az[0]
 }
 
-variable "ip" {
-  type = map(string)
-  default = {
-    prod = "10.0.150.0/24"
-    dev  = "10.0.250.0/24"
-  }
+resource "aws_subnet" "list_subnet" {
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = each.value
+  availability_zone = var.us-east-1-azs[0]
 }
