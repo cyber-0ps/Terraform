@@ -528,11 +528,6 @@ variable "us-east-1-azs" {
     ]
 }
 
-resource "aws_subnet" "list_subnet" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "10.0.200.0/24"
-  availability_zone = var.us-east-1-az[0]
-}
 
 resource "aws_subnet" "list_subnet" {
   for_each = var.env
