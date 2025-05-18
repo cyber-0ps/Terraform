@@ -58,3 +58,11 @@ variable "environment" {
   sensitive = true
   default   = "867-5309"
 }
+
+variable "ip" {
+  type = map(string)
+  default = {
+    prod = "10.0.150.0/24"
+    dev  = "10.0.250.0/24"
+  }
+}
