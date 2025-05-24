@@ -539,3 +539,21 @@ resource "aws_subnet" "list_subnet" {
 data "aws_s3_bucket" "data_bucket" {
   bucket = "my-data-lookup-bucket-btk"
 }
+
+resource "aws_iam_policy" "policy" {
+  name        = "data_bucket_policy"
+  description = "Deny access to my bucket"
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:List*"
+            ],
+            "Resource": "${data.aws_s3_bucket.data_bucket.arn}"
+        }
+    ]
+  })
+}
