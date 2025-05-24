@@ -582,3 +582,15 @@ resource "aws_vpc" "vpc" {
 
   enable_dns_hostnames = true
 }
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Name      = lower(local.server_name)
+    Owner     = lower(local.team)
+    App       = lower(local.application)
+    Service   = lower(local.service_name)
+    AppTeam   = lower(local.app_team)
+    CreatedBy = lower(local.createdby)
+  }
+}
