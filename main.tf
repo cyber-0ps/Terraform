@@ -469,17 +469,17 @@ locals {
 }
 
 variable "phone_number" {
-  type = string
+  type      = string
   sensitive = true
-  default = "867-5309"
+  default   = "867-5309"
 }
 
 locals {
   contact_info = {
-      cloud = var.cloud
-      department = var.no_caps
-      cost_code = var.character_limit
-      phone_number = var.phone_number
+    cloud        = var.cloud
+    department   = var.no_caps
+    cost_code    = var.character_limit
+    phone_number = var.phone_number
   }
 
   my_number = nonsensitive(var.phone_number)
@@ -505,7 +505,7 @@ output "cost_code" {
 
 output "phone_number" {
   sensitive = true
-  value = local.contact_info.phone_number
+  value     = local.contact_info.phone_number
 }
 
 output "my_number" {
@@ -518,20 +518,24 @@ output "phone_number" {
 }
 
 variable "us-east-1-azs" {
-    type = list(string)
-    default = [
-        "us-east-1a",
-        "us-east-1b",
-        "us-east-1c",
-        "us-east-1d",
-        "us-east-1e"
-    ]
+  type = list(string)
+  default = [
+    "us-east-1a",
+    "us-east-1b",
+    "us-east-1c",
+    "us-east-1d",
+    "us-east-1e"
+  ]
 }
 
 
 resource "aws_subnet" "list_subnet" {
-  for_each = var.env
+  for_each          = var.env
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = each.value.ip
   availability_zone = each.value.az
+}
+
+data "aws_s3_bucket" "data_bucket" {
+  bucket = "my-data-lookup-bucket-btk"
 }
