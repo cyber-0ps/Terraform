@@ -542,7 +542,7 @@ data "aws_s3_bucket" "data_bucket" {
 
 resource "aws_iam_policy" "policy" {
   name        = "data_bucket_policy"
-  description = "Deny access to my bucket"
+  description = "Allow access to my bucket"
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
