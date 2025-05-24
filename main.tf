@@ -569,3 +569,16 @@ output "data-bucket-domain-name" {
 output "data-bucket-region" {
   value = "The ${data.aws_s3_bucket.data_bucket.id} bucket is located in ${data.aws_s3_bucket.data_bucket.region}"
 }
+
+#Define the VPC
+resource "aws_vpc" "vpc" {
+  cidr_block = var.vpc_cidr
+
+  tags = {
+    Name        = upper(var.vpc_name)
+    Environment = upper(var.environment)
+    Terraform   = upper("true")
+  }
+
+  enable_dns_hostnames = true
+}
