@@ -594,3 +594,18 @@ locals {
     CreatedBy = lower(local.createdby)
   }
 }
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Name = join("-",
+      [local.application,
+        data.aws_region.current.name,
+    local.createdby])
+    Owner     = lower(local.team)
+    App       = lower(local.application)
+    Service   = lower(local.service_name)
+    AppTeam   = lower(local.app_team)
+    CreatedBy = lower(local.createdby)
+  }
+}
