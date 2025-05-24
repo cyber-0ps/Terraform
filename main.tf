@@ -567,6 +567,5 @@ output "data-bucket-domain-name" {
 }
 
 output "data-bucket-region" {
-  value = "The ${data.aws_s3_bucket.data_bucket.id} bucket is located 
-        in ${data.aws_s3_bucket.data_bucket.region}"
+  value = "The ${data.aws_s3_bucket.data_bucket.id} bucket is located in ${data.aws_s3_bucket.data_bucket.region}"
 }
