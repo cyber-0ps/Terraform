@@ -724,3 +724,11 @@ resource "aws_internet_gateway" "internet_gateway" {
 resource "tls_private_key" "generated" {
   algorithm = "RSA"
 }
+
+output "public_ip" {
+  value = aws_instance.ubuntu_server.public_ip
+}
+
+output "public_dns" {
+  value = aws_instance.ubuntu_server.public_dns
+}
