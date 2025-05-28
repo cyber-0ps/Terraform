@@ -732,3 +732,13 @@ output "public_ip" {
 output "public_dns" {
   value = aws_instance.ubuntu_server.public_dns
 }
+
+resource "random_password" "password" {
+  length  = 16
+  special = true
+}
+
+output "password" {
+  value = random_password.password.result
+  sensitive = true
+}
