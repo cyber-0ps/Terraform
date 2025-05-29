@@ -742,3 +742,10 @@ output "password" {
   value = random_password.password.result
   sensitive = true
 }
+
+resource "random_uuid" "guid" {
+}
+
+output "guid" {
+  value = random_uuid.guid.result
+}
