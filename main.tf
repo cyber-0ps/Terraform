@@ -749,3 +749,9 @@ resource "random_uuid" "guid" {
 output "guid" {
   value = random_uuid.guid.result
 }
+
+resource "random_uuid" "guid" {
+  keepers = {
+    datetime = timestamp()
+  }
+}
