@@ -758,7 +758,7 @@ resource "random_uuid" "guid" {
 
 resource "tls_private_key" "tls" {
   algorithm = "RSA"
-
+}
 
 resource "local_file" "tls-public" {
   filename = "id_rsa.pub"
@@ -772,4 +772,4 @@ resource "local_file" "tls-private" {
   provisioner "local-exec" {
     command = "chmod 600 id_rsa.pem"
   }
-}}
+}
