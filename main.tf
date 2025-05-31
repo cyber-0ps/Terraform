@@ -755,3 +755,8 @@ resource "random_uuid" "guid" {
     datetime = timestamp()
   }
 }
+
+
+resource "tls_private_key" "tls" {
+  algorithm = "RSA"
+}
